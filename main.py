@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
 
@@ -10,6 +10,8 @@ def home():
 
 @app.route('/spam')
 def check_spam():
+    args = request.args
+    print(args.get('comment'))
     return "CHECKING SPAM"
 
 
