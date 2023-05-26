@@ -3,6 +3,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import styles from '../styles/CommentDetector.module.css'
 import {useState} from 'react'
 import Image from "next/image";
+import AppNavbar from "@/components/app-navbar";
 
 const CommentDetector = () => {
 
@@ -28,6 +29,7 @@ const CommentDetector = () => {
     }
 
     return (<div>
+            <AppNavbar></AppNavbar>
             <Container className={styles.parentContainer}>
                 <Row className={styles.searchBar}>
                     <Form className="d-flex">

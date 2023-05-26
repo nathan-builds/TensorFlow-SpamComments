@@ -16,3 +16,12 @@
     padding-left: 25px;
     padding-right: 25px;
 }
+
+.instaCommentContainer{
+    margin-top: 200px;
+    width: 1000px;
+}
+.link{
+    text-decoration: none;
+    color: #a1a0a0;
+}
