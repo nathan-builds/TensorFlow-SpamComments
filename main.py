@@ -2,7 +2,6 @@ from flask_cors import CORS
 from flask import Flask, request, jsonify
 from scan_delete_insta_spam import SpamBot
 
-
 app = Flask(__name__)
 CORS(app)
 bot = SpamBot()
@@ -12,10 +11,12 @@ bot = SpamBot()
 def home():
     return "WELCOME TO FLASK"
 
+
 @app.route('/update')
 def update_insta():
-    return "WELCOME TO FLASK"
-
+    result = bot.scan_insta()
+    print(result)
+    return jsonify(result)
 
 
 @app.route('/spam')

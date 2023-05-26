@@ -11,16 +11,17 @@ const InstaCommentDetector = () => {
 
 
     const processResponse = (res) => {
+        console.log(res)
         let result = []
         res['deleted'].forEach(val => result.push({msg: val, isSpam: true}))
         res['not_deleted'].forEach(val => result.push({msg: val, isSpam: false}))
-        setComments([...comments, result])
+        setComments([...comments, ...result])
     }
 
     setInterval(() => fetch(`http://localhost:5000/update`)
         .then((res) => res.json())
         .then((response) => processResponse(response))
-        .catch(err => console.log(`ERROR FETCHING DATA ${err}`)), 30000)
+        .catch(err => console.log(`ERROR FETCHING DATA ${err}`)), 60000)
 
     return (
         <div>
