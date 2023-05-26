@@ -1,8 +1,18 @@
 .searchBar {
-    margin-bottom: 20px;
-    margin-top:200px;
+    margin-bottom: 75px;
+    margin-top: 200px;
 }
 
-.parentContainer{
-    width:1000px;
+.parentContainer {
+    width: 1000px;
+}
+
+.commentItem {
+    display: flex;
+    justify-content: space-between;
+}
+
+.commentsRow {
+    padding-left: 25px;
+    padding-right: 25px;
 }

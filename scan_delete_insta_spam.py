@@ -7,7 +7,7 @@ import re
 
 class SpamBot:
 
-    def __int__(self):
+    def __init__(self):
         self._model = tf.keras.models.load_model('model/comments_model.h5')
         x, y = binary_model.load_comments_data()
         self._tokenizer = Tokenizer()

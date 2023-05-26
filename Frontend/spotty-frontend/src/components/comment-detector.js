@@ -2,16 +2,29 @@ import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import ListGroup from 'react-bootstrap/ListGroup';
 import styles from '../styles/CommentDetector.module.css'
 import {useState} from 'react'
+import Image from "next/image";
 
 const CommentDetector = () => {
 
-    const [items, setSearchItems] = useState([])
-    const [searchText, setSearchText] = useState("");
+    const [comments, setComments] = useState([])
+    const [commentText, setCommentText] = useState("");
+
+
+    const processResponse = (res) => {
+        setComments([...comments, res])
+        //setComments([...comments, {msg: "Hello there world", isSpam: true}])
+    }
+
     const onSearchHandler = () => {
-        setSearchItems([...items, searchText])
+
+        fetch(`http://localhost:5000/spam?comment=${commentText}`)
+            .then((res) => res.json())
+            .then((response) => processResponse(response))
+            .catch(err => console.log(`ERROR FETCHING DATA ${err}`))
+
     }
     const onSearchTyped = (e) => {
-        setSearchText(e.target.value)
+        setCommentText(e.target.value)
     }
 
     return (<div>
@@ -20,22 +33,28 @@ const CommentDetector = () => {
                     <Form className="d-flex">
                         <Form.Control
                             type="search"
-                            placeholder="Search"
+                            placeholder="Enter Comment Text"
                             className="me-2"
                             aria-label="Search"
-                            value={searchText}
+                            value={commentText}
                             onChange={onSearchTyped}
 
                         />
                         <Button onClick={onSearchHandler}>
-                            Search
+                            Evaluate
                         </Button>
                     </Form>
                 </Row>
-                <Row>
+                <Row className={styles.commentsRow}>
                     <ListGroup>
-                        {items.map((idx, item) => {
-                            return (<ListGroup.Item key={idx}>item</ListGroup.Item>)
+                        {comments.map((comment, idx) => {
+                            return (<ListGroup.Item key={idx}>
+                                <div className={styles.commentItem}>
+                                    <div>{comment.msg}</div>
+                                    <Image src={comment.isSpam ? '/remove.png' : '/ham.png'} alt="image" width="32"
+                                           height="32"></Image>
+                                </div>
+                            </ListGroup.Item>)
                         })}
                     </ListGroup>
                 </Row>
