@@ -22,6 +22,7 @@
     width: 1000px;
 }
 .link{
+    padding-top: 9px;
     text-decoration: none;
     color: #a1a0a0;
 }

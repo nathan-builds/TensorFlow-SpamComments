@@ -9,7 +9,7 @@ const AppNavbar = () => {
         <Container>
             <Navbar.Brand href="#home">SPOTTY The Bot</Navbar.Brand>
             <Nav className="me-auto">
-                <Nav.Link><Link href="/src/pages/insta-comment-detector" className={styles.link}>Spam Detection</Link></Nav.Link>
+                <Link href="/insta-comment-detector" className={styles.link}>Spam Detection</Link>
                 <Nav.Link href="#features">Instagram Detection</Nav.Link>
                 <Nav.Link href="#pricing">About</Nav.Link>
             </Nav>

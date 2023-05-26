@@ -2,7 +2,7 @@ import {Button, Container, Form, Row} from "react-bootstrap";
 import styles from "@/styles/CommentDetector.module.css";
 import ListGroup from "react-bootstrap/ListGroup";
 import Image from "next/image";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import AppNavbar from "@/components/app-navbar";
 
 
@@ -17,12 +17,10 @@ const InstaCommentDetector = () => {
         setComments([...comments, result])
     }
 
-    setInterval(() => {
-        fetch(`http://localhost:5000/update`)
-            .then((res) => res.json())
-            .then((response) => processResponse(response))
-            .catch(err => console.log(`ERROR FETCHING DATA ${err}`))
-    }, 30000)
+    setInterval(() => fetch(`http://localhost:5000/update`)
+        .then((res) => res.json())
+        .then((response) => processResponse(response))
+        .catch(err => console.log(`ERROR FETCHING DATA ${err}`)), 30000)
 
     return (
         <div>
