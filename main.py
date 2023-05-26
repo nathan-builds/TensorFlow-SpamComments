@@ -1,6 +1,9 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
+from scan_delete_insta_spam import SpamBot
+
 
 app = Flask(__name__)
+bot = SpamBot()
 
 
 @app.route('/')
@@ -11,8 +14,10 @@ def home():
 @app.route('/spam')
 def check_spam():
     args = request.args
-    print(args.get('comment'))
-    return "CHECKING SPAM"
+    comment = args.get('comment')
+    is_spam = bot.is_spam(comment)
+    reply = {"msg": comment, "isSpam": is_spam}
+    return jsonify(reply)
 
 
 if __name__ == "__main__":
