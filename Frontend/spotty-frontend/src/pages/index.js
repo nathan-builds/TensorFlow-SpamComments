@@ -1,11 +1,11 @@
-import CommentDetector from "@/components/comment-detector";
+import CommentDetector from "@/pages/comment-detector";
 import AppNavbar from "@/components/app-navbar";
 
 export default function Home() {
 
     return (
         <div>
-            <CommentDetector></CommentDetector>
+            <AppNavbar></AppNavbar>
         </div>
     )
 

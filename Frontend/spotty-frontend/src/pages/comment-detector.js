@@ -4,6 +4,7 @@ import styles from '../styles/CommentDetector.module.css'
 import {useState} from 'react'
 import Image from "next/image";
 import AppNavbar from "@/components/app-navbar";
+import useWebSocket from "react-use-websocket";
 
 const CommentDetector = () => {
 
@@ -31,6 +32,23 @@ const CommentDetector = () => {
     return (<div>
             <AppNavbar></AppNavbar>
             <Container className={styles.parentContainer}>
+                <Row>
+                    <div className={styles.legend}>
+
+                        <div className={styles.iconContainer}>
+                            <div>Spam</div>
+                            <Image src={'/remove.png'} alt="image" width="32"
+                                   height="32"></Image>
+                        </div>
+
+                        <div className={styles.iconContainer}>
+                            <div>Not Spam</div>
+                            <Image src={'/ham.png'} alt="image" width="32"
+                                   height="32"></Image>
+                        </div>
+
+                    </div>
+                </Row>
                 <Row className={styles.searchBar}>
                     <Form className="d-flex">
                         <Form.Control
